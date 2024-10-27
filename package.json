@@ -1,0 +1,31 @@
+{
+  "name": "bathtiles.js",
+  "version": "1.0.0",
+  "description": "a heatmap similar to github's commit tracker and leetcode's submission tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laurenyoo/bathtiles.js.git"
+  },
+  "keywords": [
+    "heatmap",
+    "githubheatmap",
+    "leetcodeheatmap",
+    "leetcode",
+    "github",
+    "tiles",
+    "tile",
+    "tilemap",
+    "bathtiles",
+    "bathtile"
+  ],
+  "author": "Lauren Yoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Laurenyoo/bathtiles.js/issues"
+  },
+  "homepage": "https://github.com/Laurenyoo/bathtiles.js#readme"
+}
