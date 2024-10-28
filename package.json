@@ -1,11 +1,12 @@
 {
   "name": "bathtiles.js",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "a heatmap similar to github's commit tracker and leetcode's submission tracker",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "bathtiles.js",
+  "files": [
+    "bathtiles.js",
+    "bathtiles.module.css"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Laurenyoo/bathtiles.js.git"
@@ -27,5 +28,21 @@
   "bugs": {
     "url": "https://github.com/Laurenyoo/bathtiles.js/issues"
   },
-  "homepage": "https://github.com/Laurenyoo/bathtiles.js#readme"
+  "homepage": "https://github.com/Laurenyoo/bathtiles.js#readme",
+  "peerDependencies": {
+    "d3": "^7.9.0",
+    "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "d3": "^7.9.0",
+    "style-loader": "^4.0.0",
+    "typescript": "^5.5.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
