@@ -1,6 +1,7 @@
 {
   "name": "bathtiles.js",
-  "version": "1.1.2",
+  "version": "1.2.0",
+  "type": "module",
   "description": "a heatmap similar to github's commit tracker and leetcode's submission tracker",
   "main": "bathtiles.js",
   "files": [
