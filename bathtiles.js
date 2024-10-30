@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import tippy from 'tippy.js';
+import tippy from 'tippy.js'
 
 var dx = 35;
 var CELL_SIZE = 14;
@@ -18,6 +18,31 @@ class Bathtiles {
         this.colors = this.generateColorScheme(this.mainColor, NUMBER_OF_COLORS);
     }
 
+    injectTooltipStyles() {
+        const styles = `
+            .tippy-box[data-animation=fade][data-state=hidden]{opacity:0}
+            [data-tippy-root]{max-width:calc(100vw - 10px)}
+            .tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;outline:0;transition-property:transform,visibility,opacity}
+            .tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}
+            .tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}
+            .tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}
+            .tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}
+            .tippy-box[data-placement^=left]>.tippy-arrow{right:0}
+            .tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}
+            .tippy-box[data-placement^=right]>.tippy-arrow{left:0}
+            .tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}
+            .tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}
+            .tippy-arrow{width:16px;height:16px;color:#333}
+            .tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}
+            .tippy-content{position:relative;padding:5px 9px;z-index:1;}
+        `;
+
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = styles;
+        document.head.appendChild(styleSheet);
+    }
+
     generateColorScheme(baseColor, numColors) {
         const colorScale = d3.scaleSequential(d3.interpolateRgb("#eee", baseColor)).domain([0, numColors-1]);
         return Array.from({ length: numColors }, (_, i) => colorScale(i));
@@ -29,19 +54,8 @@ class Bathtiles {
         d3.select('#js-heatmap').selectAll('*').remove();
         d3.select('#js-months').selectAll('*').remove();
         d3.select('#js-legend').selectAll('*').remove();
-
-         // For Tippy
-        var popperSRC = document.createElement('script');
-        popperSRC.src = "https://unpkg.com/@popperjs/core@2";
-        target.appendChild(popperSRC);
-        var tippySRC = document.createElement('script');
-        tippySRC.src = "https://unpkg.com/tippy.js@6";
-        target.appendChild(tippySRC);
-        // For d3
-        var d3SRC = document.createElement('script');
-        d3SRC.src = "https://unpkg.com/d3@7";
-        target.appendChild(d3SRC);
-
+        // Set Tippy.js styles
+        this.injectTooltipStyles();
         // Heapmap
         const bathtilesHeatmap = document.createElement('div');
         bathtilesHeatmap.id = 'js-heatmap';
