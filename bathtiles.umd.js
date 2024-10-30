@@ -12,7 +12,7 @@
     // Global variable
     else {
         console.log('Bathtiles - browser')
-        root.Bathtiles = factory(root.d3, root.tippy);
+        root.Bathtiles = factory(root.d3, root.ippy);
     }
 }(this, function (d3, tippy) {
     'use strict';

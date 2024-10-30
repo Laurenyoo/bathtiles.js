@@ -170,6 +170,11 @@ class Bathtiles {
             console.log('No data to import.');
         }
     }
+
+    empty() {
+        this.data = formatData(null);
+        console.log('Clearing data.');
+    }
 };
 
 // Formats the JSON data to be easily ready by d3.
