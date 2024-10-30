@@ -37,6 +37,10 @@ class Bathtiles {
         var tippySRC = document.createElement('script');
         tippySRC.src = "https://unpkg.com/tippy.js@6";
         target.appendChild(tippySRC);
+        // For d3
+        var d3SRC = document.createElement('script');
+        d3SRC.src = "https://unpkg.com/d3@7";
+        target.appendChild(d3SRC);
 
         // Heapmap
         const bathtilesHeatmap = document.createElement('div');
