@@ -11,7 +11,7 @@ var LEGEND_HEIGHT = 25
 var FONT_SIZE = 12
 
 class Bathtiles {
-    constructor(json = null, mainColor = '#44a340') {
+    constructor(json = null, mainColor = '#4CAF50') {
         console.log('Bathtiles.js - Constructing...')
         this.data = formatData(json);
         this.mainColor = mainColor;
