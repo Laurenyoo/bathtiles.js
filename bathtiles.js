@@ -44,7 +44,7 @@ class Bathtiles {
     }
 
     generateColorScheme(baseColor, numColors) {
-        const colorScale = d3.scaleSequential(d3.interpolateRgb("#333", baseColor)).domain([0, numColors-1]);
+        const colorScale = d3.scaleSequential(d3.interpolateRgb("#eee", baseColor)).domain([0, numColors-1]);
         return Array.from({ length: numColors }, (_, i) => colorScale(i));
     }
 
