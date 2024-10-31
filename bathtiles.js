@@ -180,7 +180,7 @@ class Bathtiles {
 // Formats the JSON data to be easily ready by d3.
 function formatData(data) {
     console.log('Bathtiles.js - Formatting Data...', data);
-    if (!data || !data['submissionCalendar']) {
+    if (!data) {
         const defaultStartDate = new Date();
         return {
             startDate: defaultStartDate,
@@ -188,7 +188,7 @@ function formatData(data) {
             maxCount: 0
         };
     }
-    const parsedData = JSON.parse(data['submissionCalendar']);
+    const parsedData = JSON.parse(data);
     const dateTable = {};
     let oldestDate = new Date();
     let maxCount = 0;
