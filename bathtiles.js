@@ -1,17 +1,14 @@
-import * as d3 from 'd3';
-import tippy from 'tippy.js'
-
 var dx = 35;
 var CELL_SIZE = 14;
 var NUMBER_OF_COLORS = 7;
 var WIDTH = 900
 var HEIGHT = 100
 var LEGEND_WIDTH = 800
-var LEGEND_HEIGHT = 25
+var LEGEND_HEIGHT = 12
 var FONT_SIZE = 12
 
 class Bathtiles {
-    constructor(json = null, mainColor = '#39D353') {
+    constructor(json = null, mainColor = '#4CAF50') {
         console.log('Bathtiles.js - Constructing...')
         this.data = formatData(json);
         this.mainColor = mainColor;
@@ -126,7 +123,7 @@ class Bathtiles {
             .enter()
             .append('svg')
             .attr('width', LEGEND_WIDTH)
-            .attr('height', LEGEND_HEIGHT)
+            .attr('height', 15)
             .attr('dominant-baseline', 'middle')
             .append('g')
             .attr('transform', 'translate(0,10)')
