@@ -1,6 +1,9 @@
+import * as d3 from 'd3';
+import tippy from 'tippy.js'
+
 var dx = 35;
 var CELL_SIZE = 14;
-var NUMBER_OF_COLORS = 7;
+var NUMBER_OF_COLORS = 5;
 var WIDTH = 900
 var HEIGHT = 100
 var LEGEND_WIDTH = 800
@@ -47,6 +50,7 @@ class Bathtiles {
 
     load(target) {
         console.log('Bathtiles.js - Loading...')
+        const daysOfWeek = ['','Mon', '', 'Wed', '', 'Fri', ''];
         // Clear existing heatmap elements
         d3.select('#js-heatmap').selectAll('*').remove();
         d3.select('#js-months').selectAll('*').remove();
@@ -86,11 +90,6 @@ class Bathtiles {
 
         var rect = heatmapSvg.append('g')
             .attr('transform', `translate(${dx},0)`);
-
-        rect.append('text')
-            .attr('transform', `translate(-9,${CELL_SIZE * 3.5})rotate(-90)`)
-            .style('text-anchor', 'middle')
-            .text((d) => d);
 
         // Create a Day square
         rect.selectAll('rect')
@@ -134,6 +133,19 @@ class Bathtiles {
             .attr('x', (d) => d * (4.5 * CELL_SIZE) + dx)
             .text((d) => d3.utcFormat('%b')(new Date(0, d + 1, 0)))
 
+        const labelsGroup = heatmapSvg.append('g')
+            .attr('transform', `translate(${dx - 40}, 0)`); // Adjust x position to the left
+
+        // Add day labels
+        labelsGroup.selectAll('text.days')
+            .data(daysOfWeek)
+            .enter()
+            .append('text')
+            .attr('x', 35) // Position the labels to the left of the heatmap
+            .attr('y', (d, i) => i * CELL_SIZE + (CELL_SIZE / 2) + 5) // Position vertically based on index
+            .style('text-anchor', 'end') // Align text to the end
+            .text((d) => d); // Display the day name
+
         // Construct Legend
         var legendSvg = d3.select('#js-legend').selectAll('svg.legend')
             .enter()
@@ -144,7 +156,7 @@ class Bathtiles {
             .attr('width', LEGEND_WIDTH)
             .attr('height', LEGEND_HEIGHT)
             .append('g')
-            .attr('transform', 'translate(644,0)')
+            .attr('transform', 'translate(672,0)')
             .selectAll('.legend-grid')
             .data(() => d3.range(NUMBER_OF_COLORS))
             .enter()
